@@ -73,7 +73,7 @@
 						<!-- Contact -->
 							<article id="contact">
 								<h2 class="major">Contact</h2>
-								<form method="post" action="#">
+								<form method="post" action="index.php">
 									<div class="fields">
 										<div class="field half">
 											<label for="name">Name</label>
@@ -94,12 +94,37 @@
 									</ul>
 								</form>
 								<ul class="icons">
-									<li><a title="Download my resume!" href="images/Resume2022.pdf" class="icon files fa-save"><span class="label">Download my resume!</span></a></li>
+									<li><a href="images/Resume2022.pdf" class="icon files fa-save"><span class="label">Download my resume!</span></a></li>
 									<li><a href="https://www.codecademy.com/profiles/malmcb" class="icon code fa-file-code"><span class="label">Codecademy</span></a></li>
 									<li><a href="https://www.linkedin.com/in/mallory-mcbee-bbb425139/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
 									<li><a href="https://github.com/malmcb" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 								</ul>
 							</article>
+
+						<!-- php -->
+						<?php
+								$name = $_POST['name'];
+								$email = $_POST['email'];
+								$subject = $_POST['subject'];
+								$message = $_POST['message'];
+								$toEmail = 'mallorymcbee@gmail.com';
+								$from = 'From: $email'
+								$email_subject = 'New email from your website!'
+								$body = "Name: $name\nE-mail: $email\nSubject: $subject\n\nHere's their message:\n$message";;
+						 ?>
+
+						 <?php
+						 		if (isset($_POST['submitbtn']))
+								{
+									if (mail($to, $email_subject, $body, $from))
+									{
+										echo "<font color=\"green\"><p>Your message has been sent!</p></font>";
+									}
+									else {
+										echo "<font color=\"red\"><p>Your message sending has failed! Please manually email (your email)!</p></font>";
+									}
+								}
+						 ?>
 
 						<!-- Elements -->
 							<article id="elements">
